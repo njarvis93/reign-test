@@ -13,7 +13,7 @@ class NewViewModel:BaseViewModel() {
     private val url = MutableLiveData<String>()
 
     fun bind(news:Hits){
-        title.value =  news.storyTitle
+        title.value =  if(!news.storyTitle.isNullOrBlank()) news.storyTitle else news.title
         createdAt.value = Converter.convertLongToTime(news.created_at_i.toLong())
         author.value = news.author
         url.value = news.storyUrl

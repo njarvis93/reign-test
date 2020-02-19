@@ -22,7 +22,7 @@ class NewsListAdapter:RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return newsList.size
+        return if(::newsList.isInitialized) newsList.size else 0
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -34,7 +34,7 @@ class NewsListAdapter:RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: ItemNewBinding, private val context: Context): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemNewBinding, private val context: Context): RecyclerView.ViewHolder(binding.root) {
         private val viewModel = NewViewModel()
         fun bind(new:Hits){
             viewModel.bind(new)
@@ -42,9 +42,7 @@ class NewsListAdapter:RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
             binding.newCard.setOnClickListener{
                 Log.d("Debug", "estoy dando click")
                 val intent= Intent(context, NewDetaiilActivity::class.java)
-                Log.e("object intent", intent.toString())
                 val bundle = intent.extras
-                Log.e("Object bundle", bundle.toString())
                 bundle!!.putString("newUrl",new.url)
                 intent.putExtras(bundle)
                 context.startActivity(intent)

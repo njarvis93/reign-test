@@ -6,7 +6,7 @@ import java.util.*
 object Converter{
     fun convertLongToTime(time: Long): String {
         val date = Date(time)
-        val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+        val format = SimpleDateFormat("dd-MM-yyyy HH:mm")
         return format.format(date)
     }
 
@@ -15,7 +15,7 @@ object Converter{
     }
 
     fun convertDateToLong(date: String): Long {
-        val df = SimpleDateFormat("yyyy.MM.dd HH:mm")
+        val df = SimpleDateFormat("dd-MM-yyyy HH:mm")
         return df.parse(date).time
     }
 }
