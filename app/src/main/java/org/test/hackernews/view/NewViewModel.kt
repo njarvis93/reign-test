@@ -16,7 +16,7 @@ class NewViewModel:BaseViewModel() {
         title.value =  if(!news.storyTitle.isNullOrBlank()) news.storyTitle else news.title
         createdAt.value = Converter.convertLongToTime(news.created_at_i.toLong())
         author.value = news.author
-        url.value = news.storyUrl
+        url.value = if(!news.storyUrl.isNullOrBlank()) news.storyTitle else news.url
     }
 
     fun  getTitle():MutableLiveData<String>{

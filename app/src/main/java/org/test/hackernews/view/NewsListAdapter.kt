@@ -41,10 +41,9 @@ class NewsListAdapter:RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
             binding.viewModel = viewModel
             binding.newCard.setOnClickListener{
                 Log.d("Debug", "estoy dando click")
-                val intent= Intent(context, NewDetaiilActivity::class.java)
-                val bundle = intent.extras
-                bundle!!.putString("newUrl",new.url)
-                intent.putExtras(bundle)
+                val intent= Intent(context, NewDetailActivity::class.java)
+                Log.e("Url desde adapter: ", new.storyUrl)
+                intent.putExtra("newUrl",new.storyUrl)
                 context.startActivity(intent)
             }
         }
