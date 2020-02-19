@@ -22,7 +22,7 @@ class NewsListAdapter:RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return if(::newsList.isInitialized) newsList.size else 0
+        return newsList.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -45,7 +45,7 @@ class NewsListAdapter:RecyclerView.Adapter<NewsListAdapter.ViewHolder>() {
                 Log.e("object intent", intent.toString())
                 val bundle = intent.extras
                 Log.e("Object bundle", bundle.toString())
-                bundle!!.putSerializable("new",new)
+                bundle!!.putString("newUrl",new.url)
                 intent.putExtras(bundle)
                 context.startActivity(intent)
             }

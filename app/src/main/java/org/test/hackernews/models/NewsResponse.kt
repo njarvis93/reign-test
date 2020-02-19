@@ -1,17 +1,16 @@
 package org.test.hackernews.models
 
-import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import java.io.Serializable
 @JsonClass(generateAdapter = true)
 data class NewsResponse(
     val hits: List<Hits> = listOf<Hits>(),
-    val nbHits: Int,
-    val page: Int,
-    val nbPages: Int,
-    val hitsPerPage: Int,
-    val exhaustiveNbHits: Boolean,
-    val query: String,
-    val params: String,
-    val processingTimeMS: Int
-)
+    val nbHits: Int?=0,
+    val page: Int?=0,
+    val nbPages: Int?=0,
+    val hitsPerPage: Int?=0,
+    val exhaustiveNbHits: Boolean?=false,
+    val query: String?="",
+    val params: String?="",
+    val processingTimeMS: Int?=0
+):Serializable
